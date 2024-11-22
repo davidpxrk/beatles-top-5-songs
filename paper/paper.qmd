@@ -22,6 +22,7 @@ bibliography: references.bib
 
 library(spotifyr)
 library(dplyr)
+library(knitr)
 
 # CHANGE THIS
 Sys.setenv(SPOTIFY_CLIENT_ID = '')
@@ -42,16 +43,15 @@ The paper is structured as follows: Data (@sec-data) introduces the dataset; Res
 
 This report uses the `Spotify API` to gather information on the popularity of `the Beatles`' songs. Each song in the Spotify API is represented in a `.json` format containing the variables `name` (name of the song) and `popularity` (a number from 0-100 indicating its popularity).
 
-First, a Spotify Developer Account was made to get access to Spotify's `Web API`, and the client ID and secret ID was made to call Spotify's API. Next, the `R Programming Language` and the `spotifyr`, `dpylr` packages was used to extract the top 5 songs of the band `The Beatles`, and make a presentable table.
-
+First, a Spotify Developer Account was created to get access to Spotify's `Web API`, and the client ID and secret ID were used to call Spotify's API. The `R Programming Language` [@citeR], along with the `spotifyr` [@citespotifyr], `dpylr` [@citedplyr] `knitr` [@citeknitr] packages was used to extract the top 5 songs of the band `The Beatles`, and make a presentable table.
 
 # Results {#sec-results}
 
-@fig-difference shows `the Beatles`' top 5 tracks. It was discovered that the top 5 songs in popularity were Here Comes the Sun, Let It Be, Blackbird, Yesterday, In My Life."
+As shown in @fig-difference shows `the Beatles`' top 5 tracks. It was discovered that the top 5 songs in popularity were Here Comes the Sun, Let It Be, Blackbird, Yesterday, In My Life."
 
 ```{r}
 #| label: fig-difference
-#| fig-cap: "Number of Unique Products for each Grocery Vendor"
+#| fig-cap: "the Beatles' top 5 popular songs in the United States"
 #| echo: false
 
 beatles <- search_spotify('The Beatles', type = 'artist')
@@ -67,7 +67,7 @@ top_5 <- top_tracks %>%
   arrange(-popularity) %>%
   head(5) %>%
   select(name, popularity)
-print(top_5)
+knitr::kable(top_5, format = "markdown", col.names = c("Song Name", "Popularity"))
 
 ```
 
@@ -75,7 +75,7 @@ print(top_5)
 
 # Discussion {#sec-discussion}
 
-@fig-difference showed the top 5 songs in popularity were Here Comes the Sun, Let It Be, Blackbird, Yesterday, In My Life. 
+The table @fig-difference showed the top 5 songs in popularity were Here Comes the Sun, Let It Be, Blackbird, Yesterday, In My Life. 
 
 However, this is strict based off of `Spotify`'s popularity algorithm, that indicates a song's popularity based on recent play count, overall play count, user engagement and many other variables. This algorithm is kept hidden, hence it may be difficult to accurately reflect the popularity of the songs.
 
