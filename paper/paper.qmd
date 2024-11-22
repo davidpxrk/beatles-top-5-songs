@@ -19,7 +19,7 @@ bibliography: references.bib
 #| message: false
 #install.packages('ggplot2)
 #install.packages('spotifyr')
-
+#install.packages('knitr')
 library(spotifyr)
 library(dplyr)
 library(knitr)
