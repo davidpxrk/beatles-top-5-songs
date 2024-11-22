@@ -20,4 +20,4 @@ The report is structured as follows:
 
 ## Statement on LLM usage
 
-LLM and GPTs were not used in the making of this paper.s
+LLM and GPTs were not used in the making of this paper.
